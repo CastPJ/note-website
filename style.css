@@ -46,8 +46,8 @@ img {
   background: linear-gradient(
     90deg,
     rgba(64, 183, 173, 1) 0%,
-    rgba(40, 111, 105, 1) 50%,
-    rgba(34, 94, 89, 1) 100%
+    rgba(64, 183, 173, 1) 50%,
+    rgba(30, 85, 81, 1) 100%
   );
   box-shadow: 2px 2px 8px 2px #888888;
 }
@@ -60,27 +60,35 @@ img {
   cursor: pointer;
 }
 
-/* Sidebar */
+/*  Page orientation */
+.site-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar && Topbar in below 900px*/
 
 .sidebar {
-  width: 20rem;
-  height: 94vh;
-  padding-top: 2rem;
-  border-right: solid 2px rgb(64, 183, 173);
+  height: 14rem;
+  margin-top: 1rem;
+  border-bottom: solid 2px rgb(64, 183, 173);
 }
 
 .side-grid {
-  display: grid;
-  row-gap: 1rem;
-  justify-content: center;
+  display: flex;
+  justify-content: left;
+  gap: 1.5rem;
+  overflow-x: auto; /* Dodaj ten styl */
+  padding: 1rem;
 }
 
 .side-note {
-  width: 15rem;
-  height: 15rem;
+  width: 10rem;
+  height: 10rem;
   background-color: rgb(250, 235, 215);
   border: solid 1px rgb(228, 214, 196);
   box-shadow: 1px 1px 8px 1px #888888;
+  flex-shrink: 0;
 }
 
 .side-note:hover {
@@ -117,11 +125,8 @@ img {
 
 /* Main content */
 
-.site-flex {
-  display: flex;
-}
-
-.main-content {
+/* .main-content {
+  background-color: blueviolet;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -156,4 +161,4 @@ img {
   overflow: auto;
   max-height: calc(50rem - 5rem);
   text-align: justify;
-}
+} */
