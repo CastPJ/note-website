@@ -119,14 +119,13 @@ img {
   align-items: center;
   justify-content: center;
   font-size: 6rem;
-  margin-top: 2.2rem;
+  margin-top: 0.5rem;
   color: rgb(182, 171, 157);
 }
 
 /* Main content */
 
-/* .main-content {
-  background-color: blueviolet;
+.main-content {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -137,10 +136,10 @@ img {
 
 .note {
   background-color: rgb(250, 235, 215);
-  width: 40rem;
-  height: 50rem;
-  margin-top: 10rem;
-  margin-bottom: 10rem;
+  margin: 1.5rem;
+  width: 90%;
+  height: 35rem;
+  box-shadow: 1px 1px 8px 1px #888888;
 }
 
 .title,
@@ -159,6 +158,6 @@ img {
 
 .content {
   overflow: auto;
-  max-height: calc(50rem - 5rem);
+  max-height: calc(35rem - 5rem);
   text-align: justify;
-} */
+}
