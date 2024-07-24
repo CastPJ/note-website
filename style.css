@@ -126,6 +126,7 @@ img {
 
 .main-content {
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -138,7 +139,7 @@ img {
   margin: 1.5rem;
   width: 90%;
   max-width: 50rem;
-  height: 35rem;
+  height: 60vh;
   box-shadow: 1px 1px 8px 1px #888888;
 }
 
@@ -158,7 +159,7 @@ img {
 
 .content {
   overflow: auto;
-  max-height: calc(35rem - 5rem);
+  max-height: calc(60vh - 5rem);
   text-align: justify;
 }
 
@@ -185,5 +186,15 @@ img {
     width: 12rem;
     height: 12rem;
     margin-top: 1.2rem;
+  }
+
+  .note {
+    width: 90%;
+    max-width: 70rem;
+    height: 85vh;
+    margin-top: 2.2rem;
+  }
+  .content {
+    max-height: calc(85vh - 5rem);
   }
 }
