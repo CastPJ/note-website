@@ -66,7 +66,7 @@ img {
   flex-direction: column;
 }
 
-/* Sidebar && Topbar in below 900px*/
+/* Sidebar && Topbar in below width-1280px*/
 
 .sidebar {
   height: 14rem;
@@ -98,7 +98,7 @@ img {
 .x-mark {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 24px;
-  height: 10%;
+  height: 2rem;
   padding-right: 8px;
   color: rgb(197, 3, 3);
   display: flex;
@@ -119,7 +119,6 @@ img {
   align-items: center;
   justify-content: center;
   font-size: 6rem;
-  margin-top: 0.5rem;
   color: rgb(182, 171, 157);
 }
 
@@ -138,6 +137,7 @@ img {
   background-color: rgb(250, 235, 215);
   margin: 1.5rem;
   width: 90%;
+  max-width: 50rem;
   height: 35rem;
   box-shadow: 1px 1px 8px 1px #888888;
 }
@@ -160,4 +160,30 @@ img {
   overflow: auto;
   max-height: calc(35rem - 5rem);
   text-align: justify;
+}
+
+@media (min-width: 1280px) {
+  .site-flex {
+    flex-direction: row;
+  }
+
+  .sidebar {
+    width: 16rem;
+    height: 95vh;
+    margin-top: 0rem;
+    border-bottom: none;
+    border-right: solid 2px rgb(64, 183, 173);
+  }
+
+  .side-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 0rem;
+  }
+
+  .side-note {
+    width: 12rem;
+    height: 12rem;
+    margin-top: 1.2rem;
+  }
 }
