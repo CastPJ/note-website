@@ -141,6 +141,7 @@ img {
   max-width: 50rem;
   height: 60vh;
   box-shadow: 1px 1px 8px 1px #888888;
+  display: none;
 }
 
 .title,
@@ -162,6 +163,8 @@ img {
   max-height: calc(60vh - 5rem);
   text-align: justify;
 }
+
+/* media queries */
 
 @media (min-width: 1280px) {
   .site-flex {
