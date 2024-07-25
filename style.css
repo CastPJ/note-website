@@ -40,7 +40,7 @@ img {
 
 .nav {
   width: 100%;
-  height: 5%;
+  height: 4.7rem;
   background: rgb(0, 0, 0);
   background: rgb(64, 183, 173);
   background: linear-gradient(
@@ -50,6 +50,8 @@ img {
     rgba(30, 85, 81, 1) 100%
   );
   box-shadow: 2px 2px 8px 2px #888888;
+  position: absolute;
+  z-index: 1;
 }
 
 .nav-icon {
@@ -69,8 +71,8 @@ img {
 /* Sidebar && Topbar in below width-1280px*/
 
 .sidebar {
-  height: 14rem;
-  margin-top: 1rem;
+  height: auto;
+
   border-bottom: solid 2px rgb(64, 183, 173);
 }
 
@@ -80,6 +82,7 @@ img {
   gap: 1.5rem;
   overflow-x: auto; /* Dodaj ten styl */
   padding: 1rem;
+  margin-top: 4.7rem;
 }
 
 .side-note {
@@ -173,7 +176,7 @@ img {
 
   .sidebar {
     width: 16rem;
-    height: 95vh;
+    height: 100%;
     margin-top: 0rem;
     border-bottom: none;
     border-right: solid 2px rgb(64, 183, 173);
@@ -183,6 +186,8 @@ img {
     flex-direction: column;
     align-items: center;
     gap: 0rem;
+    overflow: auto;
+    max-height: 95vh;
   }
 
   .side-note {
