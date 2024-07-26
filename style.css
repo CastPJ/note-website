@@ -140,11 +140,12 @@ img {
 .note {
   background-color: rgb(250, 235, 215);
   margin: 1.5rem;
+  margin-top: 4.7rem;
   width: 90%;
   max-width: 50rem;
   height: 60vh;
   box-shadow: 1px 1px 8px 1px #888888;
-  display: none;
+  /* display: none; */
 }
 
 .title,
@@ -200,7 +201,7 @@ img {
     width: 90%;
     max-width: 70rem;
     height: 85vh;
-    margin-top: 2.2rem;
+    margin-top: 6.8rem;
   }
   .content {
     max-height: calc(85vh - 5rem);
