@@ -1,19 +1,21 @@
-// SIDE NOTE
 const plusNote = document.getElementById("plus-note");
 const sideGrid = document.getElementById("side-grid");
 const mainContent = document.getElementById("main-content");
-const sideNote = document.getElementById("side-note");
 
 let id = 1;
 
 function addNote(e) {
   e.preventDefault();
+  // Reset for focused note on adding a new one
+  const allMainNotes = document.querySelectorAll(".note");
+  allMainNotes.forEach((note) => {
+    note.style.display = "none";
+  });
 
   // SIDE NOTE
   const sideNote = document.createElement("div");
   sideNote.classList.add("side-note");
-  sideNote.setAttribute("id", "side-note");
-  sideNote.setAttribute("id", id);
+  sideNote.setAttribute("id", `side-${id}`);
 
   // x-mark
   const xMark = document.createElement("div");
@@ -29,9 +31,10 @@ function addNote(e) {
   // MAIN NOTE
   const mainNote = document.createElement("div");
   mainNote.classList.add("note");
-  mainNote.setAttribute("id", id);
+  mainNote.setAttribute("id", `main-${id}`);
   const noteTitle = document.createElement("h1");
   noteTitle.classList.add("title");
+  noteTitle.textContent = mainNote.id;
   const noteText = document.createElement("p");
   noteText.classList.add("content");
 
@@ -45,17 +48,27 @@ function addNote(e) {
   mainNote.appendChild(noteTitle);
   mainNote.appendChild(noteText);
   mainContent.appendChild(mainNote);
-  // mainNote.style.display = "block";
+
+  // Add event listener for the newly added side note
+  sideNote.addEventListener("click", changeFocus);
 
   id += 1;
-  console.log(id);
 }
 
 function changeFocus(e) {
   e.preventDefault();
 
-  console.log(e);
+  const sideNoteId = e.currentTarget.id;
+
+  const mainNoteId = `main-${sideNoteId.split("-")[1]}`;
+  const allMainNotes = document.querySelectorAll(".note");
+  allMainNotes.forEach((note) => {
+    if (note.id === mainNoteId) {
+      note.style.display = "block";
+    } else {
+      note.style.display = "none";
+    }
+  });
 }
 
 plusNote.addEventListener("click", addNote);
-sideNote.addEventListener("click", changeFocus);
