@@ -36,10 +36,12 @@ class Note {
 
     const noteTitle = document.createElement("h1");
     noteTitle.classList.add("title");
-    noteTitle.textContent = mainNote.id;
+    noteTitle.setAttribute("contenteditable", "true");
+    noteTitle.textContent = "Type your title...";
 
     const noteText = document.createElement("p");
     noteText.classList.add("content");
+    noteText.setAttribute("contenteditable", "true");
 
     mainNote.appendChild(noteTitle);
     mainNote.appendChild(noteText);
