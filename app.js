@@ -1,6 +1,8 @@
 class Note {
-  constructor(id) {
+  constructor(id, title = "Type your title...", content = "Your text...") {
     this.id = id;
+    this.title = title;
+    this.content = content;
     this.sideNote = this.createSideNote();
     this.mainNote = this.createMainNote();
   }
@@ -18,7 +20,7 @@ class Note {
 
     const sideNoteText = document.createElement("p");
     sideNoteText.classList.add("center-content");
-    sideNoteText.textContent = "Type your title...";
+    sideNoteText.textContent = this.title;
 
     xMark.appendChild(xText);
     sideNote.appendChild(xMark);
@@ -38,15 +40,24 @@ class Note {
     const noteTitle = document.createElement("h1");
     noteTitle.classList.add("title");
     noteTitle.setAttribute("contenteditable", "true");
-    noteTitle.textContent = "Type your title...";
+    noteTitle.textContent = this.title;
 
     const noteText = document.createElement("p");
     noteText.classList.add("content");
     noteText.setAttribute("contenteditable", "true");
+    noteText.textContent = this.content;
 
+    // Update side note title when main note title changes
     noteTitle.addEventListener("input", () => {
       this.title = noteTitle.textContent;
       this.sideNote.querySelector(".center-content").textContent = this.title;
+      saveNotesToLocalStorage();
+    });
+
+    // Update content and save to local storage
+    noteText.addEventListener("input", () => {
+      this.content = noteText.textContent;
+      saveNotesToLocalStorage();
     });
 
     mainNote.appendChild(noteTitle);
@@ -64,15 +75,10 @@ class Note {
     e.preventDefault();
 
     const sideNoteId = e.currentTarget.id;
-
     const mainNoteId = `main-${sideNoteId.split("-")[1]}`;
     const allMainNotes = document.querySelectorAll(".note");
     allMainNotes.forEach((note) => {
-      if (note.id === mainNoteId) {
-        note.style.display = "block";
-      } else {
-        note.style.display = "none";
-      }
+      note.style.display = note.id === mainNoteId ? "block" : "none";
     });
   }
 }
@@ -95,25 +101,35 @@ function addNote(e) {
   // Create and Add new note
   const note = new Note(id);
   note.addToDOM();
-  saveNoteToLocalStorage(id);
+  saveNotesToLocalStorage();
   id += 1;
 }
 
-function saveNoteToLocalStorage(id) {
-  const notes = JSON.parse(localStorage.getItem("notes")) || [];
-  notes.push({ id });
+function saveNotesToLocalStorage() {
+  const notes = [];
+  document.querySelectorAll(".note").forEach((noteElement) => {
+    const id = noteElement.id.split("-")[1];
+    const title = noteElement.querySelector(".title").textContent;
+    const content = noteElement.querySelector(".content").textContent;
+    notes.push({ id, title, content });
+  });
   localStorage.setItem("notes", JSON.stringify(notes));
 }
 
 function loadNotesFromLocalStorage() {
   const notes = JSON.parse(localStorage.getItem("notes")) || [];
   notes.forEach((noteData) => {
-    const note = new Note(noteData.id);
+    const note = new Note(noteData.id, noteData.title, noteData.content);
     note.addToDOM();
   });
 
   if (notes.length > 0) {
-    id = notes[notes.length - 1].id + 1;
+    id = parseInt(notes[notes.length - 1].id) + 1;
+    // Hide all notes except the last one
+    const allMainNotes = document.querySelectorAll(".note");
+    allMainNotes.forEach((note) => {
+      note.style.display = "none";
+    });
   }
 }
 
