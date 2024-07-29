@@ -16,8 +16,9 @@ class Note {
     xText.classList.add("x-mark-p");
     xText.innerText = "x";
 
-    const sideNoteText = document.createElement("div");
+    const sideNoteText = document.createElement("p");
     sideNoteText.classList.add("center-content");
+    sideNoteText.textContent = "Type your title...";
 
     xMark.appendChild(xText);
     sideNote.appendChild(xMark);
@@ -42,6 +43,11 @@ class Note {
     const noteText = document.createElement("p");
     noteText.classList.add("content");
     noteText.setAttribute("contenteditable", "true");
+
+    noteTitle.addEventListener("input", () => {
+      this.title = noteTitle.textContent;
+      this.sideNote.querySelector(".center-content").textContent = this.title;
+    });
 
     mainNote.appendChild(noteTitle);
     mainNote.appendChild(noteText);
@@ -89,7 +95,27 @@ function addNote(e) {
   // Create and Add new note
   const note = new Note(id);
   note.addToDOM();
+  saveNoteToLocalStorage(id);
   id += 1;
 }
 
+function saveNoteToLocalStorage(id) {
+  const notes = JSON.parse(localStorage.getItem("notes")) || [];
+  notes.push({ id });
+  localStorage.setItem("notes", JSON.stringify(notes));
+}
+
+function loadNotesFromLocalStorage() {
+  const notes = JSON.parse(localStorage.getItem("notes")) || [];
+  notes.forEach((noteData) => {
+    const note = new Note(noteData.id);
+    note.addToDOM();
+  });
+
+  if (notes.length > 0) {
+    id = notes[notes.length - 1].id + 1;
+  }
+}
+
 plusNote.addEventListener("click", addNote);
+window.addEventListener("load", loadNotesFromLocalStorage);

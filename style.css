@@ -125,6 +125,12 @@ img {
   color: rgb(182, 171, 157);
 }
 
+.center-content {
+  font-family: "Franklin Gothic ATF Thin", "Arial Narrow", Arial, sans-serif;
+  margin: 0.5rem;
+  font-size: 1rem;
+}
+
 /* Main content */
 
 .main-content {
