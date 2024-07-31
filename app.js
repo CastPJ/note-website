@@ -16,6 +16,7 @@ class Note {
     xMark.classList.add("x-mark");
     const xText = document.createElement("p");
     xText.classList.add("x-mark-p");
+    xText.setAttribute("id", `x-mark-${this.id}`);
     xText.innerText = "x";
 
     const sideNoteText = document.createElement("p");
@@ -28,6 +29,12 @@ class Note {
 
     // Bind event listener for changing focus
     sideNote.addEventListener("click", this.changeFocus.bind(this));
+
+    // Bind event listener for deleting note
+    xText.addEventListener("click", (e) => {
+      e.stopPropagation();
+      this.deleteNote();
+    });
 
     return sideNote;
   }
@@ -81,11 +88,31 @@ class Note {
       note.style.display = note.id === mainNoteId ? "block" : "none";
     });
   }
+
+  deleteNote() {
+    if (
+      confirm(
+        "Are you sure you want to delete note and all corresponding text?"
+      )
+    ) {
+      // Remove from DOM
+      this.sideNote.remove();
+      this.mainNote.remove();
+
+      // Remove from local storage
+      const notes = JSON.parse(localStorage.getItem("notes")) || [];
+      const updatedNotes = notes.filter(
+        (note) => note.id !== this.id.toString()
+      );
+      localStorage.setItem("notes", JSON.stringify(updatedNotes));
+    }
+  }
 }
 
 const plusNote = document.getElementById("plus-note");
 const sideGrid = document.getElementById("side-grid");
 const mainContent = document.getElementById("main-content");
+const xMark = document.getElementById("x-mark");
 
 let id = 1;
 

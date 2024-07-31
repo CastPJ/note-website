@@ -117,12 +117,38 @@ img {
   color: rgb(161, 1, 1);
 }
 
+.plus-button {
+  background-color: rgb(107, 179, 173);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  height: 6rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border: none;
+  border-radius: 5rem;
+  flex-shrink: 0;
+}
+
+.plus-button:hover {
+  background-color: rgb(51, 182, 171);
+  transition: 0.2s;
+}
+
+.plus-button:active {
+  background-color: rgb(72, 194, 184);
+  transition: 0.1s;
+}
+
 .center-plus {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 6rem;
-  color: rgb(182, 171, 157);
+  font-size: 4rem;
+  color: rgb(255, 255, 255);
 }
 
 .center-content {
