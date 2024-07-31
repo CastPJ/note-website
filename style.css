@@ -88,7 +88,8 @@ img {
 .side-note {
   width: 10rem;
   height: 10rem;
-  background-color: rgb(250, 235, 215);
+  /* background-color: rgb(250, 235, 215); */
+  background-color: rgb(252, 247, 242);
   border: solid 1px rgb(228, 214, 196);
   box-shadow: 1px 1px 8px 1px #888888;
   flex-shrink: 0;
@@ -155,6 +156,15 @@ img {
   font-family: "Franklin Gothic ATF Thin", "Arial Narrow", Arial, sans-serif;
   margin: 0.5rem;
   font-size: 1rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2rem;
+  max-height: calc(1.2rem * 5);
 }
 
 /* Main content */
@@ -170,7 +180,7 @@ img {
 }
 
 .note {
-  background-color: rgb(250, 235, 215);
+  background-color: rgb(252, 247, 242);
   margin: 1.5rem;
   margin-top: 4.7rem;
   width: 90%;
